@@ -172,7 +172,7 @@ ul { list-style: none; }
 
 .contact-item i { color: var(--primary-color); }
 
-/* [추가] 복사 아이콘 스타일 */
+/* 복사 아이콘 스타일 */
 .copy-icon {
     margin-left: 8px;
     color: #b0b8c1; /* 은은한 회색 */
@@ -180,16 +180,13 @@ ul { list-style: none; }
     transition: all 0.2s;
     font-size: 0.9rem;
 }
-/* 마우스 올렸을 때 효과 */
 .copy-icon:hover {
     color: var(--primary-color);
     transform: scale(1.1);
 }
-/* 복사 성공 시 녹색 체크로 변할 때의 스타일 */
 .copy-success {
-    color: #2ecc71 !important; /* 밝은 녹색 */
+    color: #2ecc71 !important; /* 성공 시 밝은 녹색 */
 }
-
 
 .traits-grid {
     flex: 2;
@@ -332,33 +329,129 @@ ul { list-style: none; }
 .badge.etc { background: #f8f9fa; color: #495057; border: 1px solid #dee2e6; }
 
 
-/* [5. Certifications] */
-.cert-grid {
+/* [5. Certifications - Grid Layout] */
+/* [수정] 나란히 배치되는 그리드 레이아웃으로 복귀 */
+.cert-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+    align-items: start; /* 카드가 늘어나지 않고 상단 정렬되도록 */
 }
 
-.cert-item {
+.cert-wrapper {
     background: var(--card-bg);
-    padding: 20px;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+/* [수정] 아코디언이 닫혀 있을 때(active가 아닐 때)만 호버 효과 적용 */
+.cert-wrapper:not(.active):hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-color: #e9ecef;
+}
+
+/* active 상태일 때는 변화 없음 (단순히 내용만 열림) */
+.cert-wrapper.active {
+    transform: none;
+    box-shadow: var(--shadow);
+}
+
+.cert-header-card {
+    padding: 20px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    background: #fff;
+    transition: background 0.2s;
+}
+
+.cert-header-left {
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
 .cert-icon {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: var(--primary-color);
     background: #e6f0ff;
-    width: 50px; height: 50px;
+    width: 45px; height: 45px;
     border-radius: 12px;
     display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
 }
-.cert-info h4 { margin: 0; font-size: 1rem; color: var(--text-main); }
-.cert-info p { margin: 0; font-size: 0.85rem; color: var(--text-sub); }
+
+.cert-info h4 { 
+    margin: 0; 
+    font-size: 1rem; 
+    color: var(--text-main); 
+    margin-bottom: 2px; 
+    font-weight: 700;
+}
+.cert-info p { 
+    margin: 0; 
+    font-size: 0.85rem; 
+    color: var(--text-sub); 
+}
+
+.cert-toggle-icon {
+    color: #adb5bd;
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.cert-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease;
+    opacity: 0;
+    background-color: #f8f9fa; 
+    border-top: 1px solid #eee;
+}
+
+.cert-detail-content {
+    padding: 20px;
+    /* 왼쪽 파란색 포인트 라인 */
+    border-left: 4px solid var(--primary-color);
+    margin: 15px 20px; 
+    background: #fff;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+}
+
+.cert-desc {
+    font-size: 0.9rem;
+    color: #495057;
+    margin-bottom: 8px;
+    font-weight: 500;
+    line-height: 1.5;
+    word-break: keep-all;
+}
+
+.cert-number {
+    font-size: 0.8rem;
+    color: #868e96;
+    font-family: monospace; 
+    background-color: #f1f3f5;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.cert-wrapper.active .cert-detail {
+    max-height: 200px; /* 내용에 따라 충분히 */
+    opacity: 1;
+}
+
+.cert-wrapper.active .cert-toggle-icon {
+    transform: rotate(180deg);
+    color: var(--primary-color);
+}
 
 
 /* [6. Projects] */

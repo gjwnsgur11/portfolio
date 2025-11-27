@@ -46,8 +46,16 @@
                 </div>
                 
                 <div class="contact-info">
-                    <div class="contact-item"><i class="fas fa-envelope"></i> hjhv8v@naver.com</div>
-                    <div class="contact-item"><i class="fas fa-phone"></i> 010-3897-9129</div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i> 
+                        <span>hjhv8v@naver.com</span>
+                        <i class="fas fa-copy copy-icon" onclick="copyText('hjhv8v@naver.com', this)" title="이메일 복사하기"></i>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i> 
+                        <span>010-3897-9129</span>
+                        <i class="fas fa-copy copy-icon" onclick="copyText('010-3897-9129', this)" title="전화번호 복사하기"></i>
+                    </div>
                 </div>
             </div>
 
@@ -392,6 +400,21 @@
         function toggleProject(id) {
             const projectWrapper = document.getElementById(id);
             projectWrapper.classList.toggle('active');
+        }
+
+        function copyText(text, element) {
+            navigator.clipboard.writeText(text).then(() => {
+                // 성공 시 아이콘 변경 (체크 표시)
+                const originalClass = element.className;
+                element.className = "fas fa-check copy-success"; 
+                
+                // 1.5초 뒤 원래대로 복구
+                setTimeout(() => {
+                    element.className = originalClass;
+                }, 1500);
+            }).catch(err => {
+                alert("복사에 실패했습니다.");
+            });
         }
     </script>
 

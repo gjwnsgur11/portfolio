@@ -572,7 +572,7 @@ ul { list-style: none; }
     background-color: #fdfdfd;
 }
 
-/* 청록색(Teal/Mint) 안내 박스 */
+/* [청록색(Teal/Mint) 안내 박스] */
 .notice-box {
     background-color: #e0f2f1; 
     border-left: 5px solid #009688; 
@@ -729,20 +729,40 @@ ul { list-style: none; }
     top: 4px;
 }
 
-.p-tech-container { display: flex; flex-wrap: wrap; gap: 8px; }
+/* [수정됨] 기술 스택: 무조건 한 줄에 3개씩 배치 (Grid 적용) */
+.p-tech-container { 
+    display: grid;
+    /* 1fr을 3번 반복 -> 화면을 3등분하여 똑같은 크기 칸 3개를 만듦 */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px; /* 버튼 사이 간격 */
+}
+
 .p-tech-tag {
     background: #fff;
     color: #495057;
-    padding: 6px 12px;
-    border-radius: 20px;
+    padding: 8px 5px; /* 상하 8px, 좌우 5px */
+    border-radius: 20px; /* 둥근 캡슐 모양 */
     font-size: 0.85rem;
     font-weight: 600;
     border: 1px solid #dee2e6;
     box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    
+    /* 내용물 정렬: 가운데 정렬 */
     display: flex;
     align-items: center;
-    gap: 6px;
+    justify-content: center; /* 아이콘과 글자를 가운데로 모음 */
+    gap: 6px; /* 아이콘과 글자 사이 간격 */
+    
+    /* 글자가 너무 길 경우를 대비한 설정 */
+    text-align: center;
+    word-break: break-word;
 }
+
+.p-tech-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
 .p-tech-tag i {
     color: var(--primary-color);
     font-size: 0.9rem;
@@ -794,6 +814,11 @@ ul { list-style: none; }
     .pdf-actions { flex-direction: column; gap: 10px; }
     .btn-pdf-view, .btn-pdf-download, .btn-video-view { flex: 1; width: 100%; }
     
+    /* 모바일에서 기술 스택 2열 배치 */
+    .p-tech-container {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+
     /* 모바일에서는 오버레이 효과 숨김 */
     .hover-overlay { display: none !important; }
 

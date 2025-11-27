@@ -202,6 +202,100 @@ ul { list-style: none; }
     border-left: 5px solid var(--primary-color);
     height: 100%;
 }
+/* ================================
+   Enhanced Trait Card (추천 조합)
+   ================================ */
+
+.trait-box.enhanced {
+    position: relative;
+    overflow: hidden;
+    padding: 30px;
+    padding-top: 35px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: 0.25s ease;
+}
+
+/* =========================================
+    ICON 강조 (원형 배경 + 중앙 정렬 강조)
+   ========================================= */
+.trait-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.trait-icon-circle {
+    width: 55px;
+    height: 55px;
+    background: rgba(37,117,230,0.12); /* 연한 블루 */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trait-icon-circle i {
+    font-size: 1.6rem;
+    color: #2575e6;
+}
+
+/* 제목 */
+.trait-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #0d2a59;
+    margin-top: 5px;
+}
+
+/* ================================
+   체크리스트 스타일
+   ================================ */
+.trait-checklist {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.trait-checklist li {
+    font-size: 0.95rem;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.trait-checklist li i {
+    font-size: 0.75rem;
+    color: #2575e6;
+}
+
+/* ================================
+   하단 태그 (Keyword Chip)
+   ================================ */
+.trait-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+
+.trait-tags span {
+    background: #f1f6ff;
+    color: #1f4ba6;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 10px;
+    border: 1px solid #d6e4ff;
+}
 
 .trait-icon { font-size: 2rem; color: var(--primary-color); margin-bottom: 10px; }
 .trait-title { font-weight: 700; font-size: 1.2rem; margin-bottom: 5px; }
@@ -820,4 +914,3 @@ ul { list-style: none; }
     .hover-overlay { display: none !important; }
 
 }
-

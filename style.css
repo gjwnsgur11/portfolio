@@ -70,7 +70,6 @@ ul { list-style: none; }
 .intro-section {
     display: flex;
     gap: 40px;
-    align-items: flex-start;
     flex-wrap: wrap;
 }
 
@@ -201,6 +200,7 @@ ul { list-style: none; }
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     border-left: 5px solid var(--primary-color);
+    height: 100%;
 }
 
 .trait-icon { font-size: 2rem; color: var(--primary-color); margin-bottom: 10px; }
@@ -820,3 +820,4 @@ ul { list-style: none; }
     .hover-overlay { display: none !important; }
 
 }
+

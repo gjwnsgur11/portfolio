@@ -17,7 +17,7 @@
     --gantt-poly-text: #004080;
     --gantt-poly-border: #b3d1ff;
 
-    --bg-color: #fcfcfc;
+    --bg-color: #f8f9fa; /* 전체 배경을 아주 연한 회색으로 변경하여 카드와 대비 */
     --card-bg: #ffffff;
     --text-main: #2d3436;
     --text-sub: #636e72;
@@ -171,10 +171,9 @@ ul { list-style: none; }
 
 .contact-item i { color: var(--primary-color); }
 
-/* 복사 아이콘 스타일 */
 .copy-icon {
     margin-left: 8px;
-    color: #b0b8c1; /* 은은한 회색 */
+    color: #b0b8c1;
     cursor: pointer;
     transition: all 0.2s;
     font-size: 0.9rem;
@@ -184,7 +183,7 @@ ul { list-style: none; }
     transform: scale(1.1);
 }
 .copy-success {
-    color: #2ecc71 !important; /* 성공 시 밝은 녹색 */
+    color: #2ecc71 !important;
 }
 
 .traits-grid {
@@ -193,18 +192,6 @@ ul { list-style: none; }
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 }
-
-.trait-box {
-    background: var(--card-bg);
-    padding: 25px;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    border-left: 5px solid var(--primary-color);
-    height: 100%;
-}
-/* ================================
-   Enhanced Trait Card (추천 조합)
-   ================================ */
 
 .trait-box.enhanced {
     position: relative;
@@ -220,9 +207,6 @@ ul { list-style: none; }
     transition: 0.25s ease;
 }
 
-/* =========================================
-    ICON 강조 (원형 배경 + 중앙 정렬 강조)
-   ========================================= */
 .trait-icon-wrap {
     display: flex;
     align-items: center;
@@ -232,7 +216,7 @@ ul { list-style: none; }
 .trait-icon-circle {
     width: 55px;
     height: 55px;
-    background: rgba(37,117,230,0.12); /* 연한 블루 */
+    background: rgba(37,117,230,0.12); 
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -244,7 +228,6 @@ ul { list-style: none; }
     color: #2575e6;
 }
 
-/* 제목 */
 .trait-title {
     font-size: 1.35rem;
     font-weight: 800;
@@ -252,9 +235,6 @@ ul { list-style: none; }
     margin-top: 5px;
 }
 
-/* ================================
-   체크리스트 스타일
-   ================================ */
 .trait-checklist {
     margin: 0;
     padding: 0;
@@ -277,9 +257,6 @@ ul { list-style: none; }
     color: #2575e6;
 }
 
-/* ================================
-   하단 태그 (Keyword Chip)
-   ================================ */
 .trait-tags {
     display: flex;
     gap: 8px;
@@ -296,10 +273,6 @@ ul { list-style: none; }
     border-radius: 10px;
     border: 1px solid #d6e4ff;
 }
-
-.trait-icon { font-size: 2rem; color: var(--primary-color); margin-bottom: 10px; }
-.trait-title { font-weight: 700; font-size: 1.2rem; margin-bottom: 5px; }
-.trait-desc { font-size: 0.9rem; color: var(--text-sub); word-break: keep-all; }
 
 
 /* [3. Education - Timeline] */
@@ -363,7 +336,6 @@ ul { list-style: none; }
     backface-visibility: hidden;
     transform: translateZ(0); 
     -webkit-font-smoothing: subpixel-antialiased;
-    
     cursor: text;
     user-select: text;
 }
@@ -403,31 +375,113 @@ ul { list-style: none; }
 .mobile-history-list { display: none; }
 
 
-/* [4. Skills] */
-.skill-group { margin-bottom: 30px; }
-.skill-label { font-size: 1.3rem; font-weight: 700; margin-bottom: 15px; color: var(--primary-color); }
-.skill-badges { display: flex; flex-wrap: wrap; gap: 10px; }
+/* =========================================
+   [4. Skills - Modern Minimalist Design]
+   "복잡한 선 제거, 아이콘 박스로 포인트"
+   ========================================= */
 
-.badge {
-    padding: 10px 20px;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    display: flex; align-items: center; gap: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    cursor: text;
+.skill-group { margin-bottom: 50px; }
+
+/* 섹션 라벨: 더 작고 세련되게 */
+.skill-label { 
+    font-size: 1.1rem; 
+    font-weight: 800; 
+    margin-bottom: 20px; 
+    color: var(--text-sub);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.skill-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e0e0e0;
 }
 
-.badge.strong { background: #e6f0ff; color: #004080; border: 1px solid #b3d1ff; }
-.badge.know { background: #fff3cd; color: #856404; border: 1px solid #ffe082; } 
-.badge.etc { background: #f8f9fa; color: #495057; border: 1px solid #dee2e6; }
+/* 그리드 레이아웃 */
+.skill-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* 카드 스타일 (심플 & 클린 & 정적) */
+.skill-item {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border: 1px solid rgba(0,0,0,0.03); /* 아주 연한 테두리 */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02); /* 공기 같은 그림자 */
+    /* [수정] 호버 효과 제거를 위해 transition 삭제 */
+}
+
+/* [수정] 호버 효과 제거 (움직임 없음) */
+.skill-item:hover {
+    transform: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02); /* 그림자도 유지 */
+}
+
+/* 헤더: 아이콘 + 텍스트 */
+.skill-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 5px;
+}
+
+/* 아이콘 박스 스타일링 (핵심 디자인 요소) */
+.skill-header i { 
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* 제목 스타일 */
+.skill-title-text {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #2d3436;
+    letter-spacing: -0.3px;
+}
+
+/* 등급별 색상 테마 (배경색 + 아이콘색) */
+/* Strong: 신뢰의 블루 */
+.skill-item.strong i { background: #e3f2fd; color: #1565c0; }
+
+/* Know: 주의/강조의 옐로우오렌지 */
+.skill-item.know i { background: #fff3e0; color: #ef6c00; }
+
+/* Etc: 차분한 그레이 */
+.skill-item.etc i { background: #f5f5f5; color: #616161; }
+
+/* 설명 텍스트 */
+.skill-body {
+    padding-left: 2px; /* 시각적 정렬 보정 */
+}
+
+.skill-desc {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: #636e72; /* 가독성 좋은 진한 회색 */
+    word-break: keep-all;
+    font-weight: 500;
+}
 
 
-/* [5. Certifications - Grid Layout] */
-/* 나란히 배치되는 그리드 레이아웃 */
+/* [5. Certifications] */
 .cert-container {
     display: grid;
-    /* 카드가 너무 좁아지지 않도록 최소 280px로 설정 */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     align-items: start;
@@ -442,7 +496,6 @@ ul { list-style: none; }
     border: 1px solid transparent;
 }
 
-/* 아코디언이 닫혀 있을 때만 호버 효과 적용 */
 .cert-wrapper:not(.active):hover {
     transform: translateY(-5px) scale(1.02);
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
@@ -709,7 +762,6 @@ ul { list-style: none; }
     text-underline-offset: 3px;
 }
 
-
 /* PDF 버튼 스타일 */
 .pdf-actions {
     display: flex;
@@ -823,36 +875,29 @@ ul { list-style: none; }
     top: 4px;
 }
 
-/* [수정됨] 기술 스택: 무조건 한 줄에 3개씩 배치 (Grid 적용) */
+/* 기술 스택 Grid */
 .p-tech-container { 
     display: grid;
-    /* 1fr을 3번 반복 -> 화면을 3등분하여 똑같은 크기 칸 3개를 만듦 */
     grid-template-columns: repeat(3, 1fr); 
-    gap: 10px; /* 버튼 사이 간격 */
+    gap: 10px; 
 }
 
 .p-tech-tag {
     background: #fff;
     color: #495057;
-    padding: 8px 5px; /* 상하 8px, 좌우 5px */
-    border-radius: 20px; /* 둥근 캡슐 모양 */
+    padding: 8px 5px;
+    border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 600;
     border: 1px solid #dee2e6;
     box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-    
-    /* 내용물 정렬: 가운데 정렬 */
     display: flex;
     align-items: center;
-    justify-content: center; /* 아이콘과 글자를 가운데로 모음 */
-    gap: 6px; /* 아이콘과 글자 사이 간격 */
-    
-    /* 글자가 너무 길 경우를 대비한 설정 */
+    justify-content: center;
+    gap: 6px;
     text-align: center;
     word-break: break-word;
 }
-
-/* [삭제됨] 마우스 호버 확대 효과 제거 (.p-tech-tag:hover 규칙 삭제) */
 
 .p-tech-tag i {
     color: var(--primary-color);
@@ -905,12 +950,9 @@ ul { list-style: none; }
     .pdf-actions { flex-direction: column; gap: 10px; }
     .btn-pdf-view, .btn-pdf-download, .btn-video-view { flex: 1; width: 100%; }
     
-    /* 모바일에서 기술 스택 2열 배치 */
     .p-tech-container {
         grid-template-columns: repeat(2, 1fr); 
     }
 
-    /* 모바일에서는 오버레이 효과 숨김 */
     .hover-overlay { display: none !important; }
-
 }
